@@ -1,15 +1,17 @@
 import * as utils from "@dcl/ecs-scene-utils"
 import * as ui from '@dcl/ui-scene-utils'
+import { hud } from "src/builderhud/BuilderHUD"
 
 export class VideoFrame extends Entity {
   public videoTexture: VideoTexture
 
   constructor(model: GLTFShape, frameSize: Vector3, public texture: Texture, thumbNail: string, clip: VideoClip, transform: Transform, trigger: utils.TriggerBoxShape, title: string, artist: string, link?: string ) {
-    super()
+    super(title)
     engine.addEntity(this)
     this.addComponent(model)
     this.addComponent(clip)
     this.addComponent(transform)
+    hud.attachToEntity(this)
     
 
      //Create texture
